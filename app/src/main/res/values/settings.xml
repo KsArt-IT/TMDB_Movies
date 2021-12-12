@@ -10,6 +10,17 @@
     <string name="settings_dark_theme_on_hint">dark theme</string>
     <string name="settings_dark_theme_key" translatable="false">dark_theme</string>
     <bool name="settings_dark_theme_switch_value">false</bool>
+
+    <string name="settings_language_key" translatable="false">language</string>
+    <string name="settings_language_value" translatable="false">en</string>
     <!-- -->
+
+    <string name="settings_movie_title">Settings</string>
+
+    <string name="settings_language_title">Language movies</string>
+
+    <string name="settings_language_english">English</string>
+    <string name="settings_language_ukraine">Ukraine</string>
+    <string name="settings_language_russian">Russian</string>
 
 </resources>

@@ -8,10 +8,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.preference.PreferenceManager
+import dagger.hilt.android.AndroidEntryPoint
 import ru.ksart.tmdb_movies.R
 import ru.ksart.tmdb_movies.databinding.ActivityMainBinding
 import ru.ksart.tmdb_movies.ui.extension.setTheme
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

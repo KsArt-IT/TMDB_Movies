@@ -84,6 +84,8 @@ dependencies {
     implementation("com.squareup.moshi:moshi:$moshiVers")
     implementation("com.squareup.moshi:moshi-kotlin:$moshiVers")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVers")
+    // Paging3
+    implementation("androidx.paging:paging-runtime-ktx:3.1.0")
     // RoomDao
     val roomVers: String by rootProject.extra
     implementation("androidx.room:room-runtime:$roomVers")
