@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TMDB_Movies</string>
+    <string name="title_action_search">Fing movie</string>
+    <string name="title_action_settings">Settings</string>
+    <string name="app_settings_title">Settings</string>
+    <string name="app_name_title">TMDB Movies</string>
 </resources>

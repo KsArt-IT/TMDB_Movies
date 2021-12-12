@@ -48,6 +48,8 @@ dependencies {
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.2")
 
+    // SplashScreen on devices prior Android 12
+    implementation("androidx.core:core-splashscreen:1.0.0-alpha02")
     // Fragment
     val fragmentVers: String by rootProject.extra
     implementation("androidx.fragment:fragment-ktx:$fragmentVers")

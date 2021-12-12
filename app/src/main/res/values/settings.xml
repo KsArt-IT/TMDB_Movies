@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="first_start_key" translatable="false">first_start</string>
+
+    <!-- -->
+    <string name="basic_settings_title">Basic settings</string>
+
+    <string name="settings_dark_theme_title">Dark theme</string>
+    <string name="settings_dark_theme_off_hint">light theme</string>
+    <string name="settings_dark_theme_on_hint">dark theme</string>
+    <string name="settings_dark_theme_key" translatable="false">dark_theme</string>
+    <bool name="settings_dark_theme_switch_value">false</bool>
+    <!-- -->
+
+</resources>
