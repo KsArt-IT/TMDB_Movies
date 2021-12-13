@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="?attr/colorPrimarySurface"
+    android:padding="@dimen/padding_small">
+
+    <ImageView
+        android:id="@+id/movieImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/movieTitle"
+        style="?attr/textAppearanceCaption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:gravity="center"
+        android:textColor="?attr/colorOnPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/movieImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/cities" />
+
+    <TextView
+        android:id="@+id/movieReleaseDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:gravity="center"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/movieTitle"
+        app:layout_constraintTop_toBottomOf="@id/movieTitle"
+        tools:text="2021-12-13" />
+
+    <TextView
+        android:id="@+id/movieGenre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/movieTitle"
+        app:layout_constraintTop_toBottomOf="@id/movieReleaseDate"
+        tools:text="@tools:sample/cities" />
+
+    <TextView
+        android:id="@+id/movieOverview"
+        style="?attr/textAppearanceSubtitle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="4"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/movieTitle"
+        app:layout_constraintTop_toBottomOf="@id/movieGenre"
+        tools:ignore="SmallSp"
+        tools:text="@tools:sample/cities" />
+
+    <TextView
+        android:id="@+id/popularityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/movie_popularity_text"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/voteAverageText"
+        app:layout_constraintStart_toStartOf="@id/movieTitle" />
+
+    <TextView
+        android:id="@+id/moviePopularity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/popularityText"
+        app:layout_constraintTop_toTopOf="@+id/popularityText"
+        tools:text="8.611" />
+
+    <TextView
+        android:id="@+id/voteAverageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        android:text="@string/movie_vote_average_text"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/movieTitle"
+
+        />
+
+    <TextView
+        android:id="@+id/movieVoteAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/voteAverageText"
+        app:layout_constraintTop_toTopOf="@+id/voteAverageText"
+        tools:text="10.1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

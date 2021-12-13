@@ -9,7 +9,7 @@ import java.io.IOException
 
 class MoviesTopRatedPagingSource(
     private val service: TmdbApiService,
-    private val settings: SettingsRepository,
+    private val language: String,
 ) : PagingSource<Int, MovieTop>() {
 
     override fun getRefreshKey(state: PagingState<Int, MovieTop>): Int? {
@@ -22,7 +22,6 @@ class MoviesTopRatedPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieTop> {
         val position = params.key ?: TmdbApiService.STARTING_PAGE_INDEX
         return try {
-            val language = settings.getLanguage()
             val response = service.getMovieTop(page = position, language = language)
             if (response.isSuccessful) {
                 val result = response.body()?.results ?: emptyList()
