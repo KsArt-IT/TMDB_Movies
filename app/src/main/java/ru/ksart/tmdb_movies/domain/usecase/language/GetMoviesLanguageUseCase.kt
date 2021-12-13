@@ -17,4 +17,13 @@ class GetMoviesLanguageUseCase @Inject constructor(
         "en-US"
         Results.Success("en-US")
     }
+
+    suspend operator fun invoke(): String {
+        return try {
+            repository.getLanguageMovies()
+        } catch (e: Exception) {
+            "en-US"
+        }
+    }
+
 }

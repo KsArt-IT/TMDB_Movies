@@ -1,6 +1,5 @@
 package ru.ksart.tmdb_movies.ui.top_rated
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -60,7 +59,6 @@ class MoviesTopRatedViewModel @Inject constructor(
         val pagingData = getMoviesLanguage.observe()
             .filterIsInstance<Results.Success<String>>()
             .flatMapLatest { result ->
-                Log.d("tagMovie", "MoviesTopRatedViewModel: language=${result.data}")
                 getMoviesTopRated.observe(result.data)
             }.mapNotNull { state ->
                 when (state) {

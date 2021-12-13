@@ -23,7 +23,7 @@ class MoviesRepositoryImpl @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
 ) : MoviesRepository {
 
-    override suspend fun getMovieById(id: Int, language: String): Movie = withContext(dispatcher) {
+    override suspend fun getMovieById(id: Long, language: String): Movie = withContext(dispatcher) {
         service.getMovieById(movieId = id, language = language)
     }
 

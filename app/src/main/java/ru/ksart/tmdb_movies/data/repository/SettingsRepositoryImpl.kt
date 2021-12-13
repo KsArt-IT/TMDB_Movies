@@ -49,7 +49,7 @@ class SettingsRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun getLanguageMovies(): String {
+    override fun getLanguageMovies(): String {
         return when (defaultPreferences.getString(
             languageKey,
             res.getString(R.string.settings_language_value)

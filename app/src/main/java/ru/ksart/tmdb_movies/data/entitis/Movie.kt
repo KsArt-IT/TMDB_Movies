@@ -1,10 +1,13 @@
 package ru.ksart.tmdb_movies.data.entitis
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @JsonClass(generateAdapter = true)
-data class Movie (
+data class Movie(
     @Json(name = "id")
     val id: Long,
     @Json(name = "title")
@@ -41,7 +44,7 @@ data class Movie (
 
     @Json(name = "video")
     val video: Boolean?,
-)
+) : Parcelable
 /*
 {
   "adult": false,

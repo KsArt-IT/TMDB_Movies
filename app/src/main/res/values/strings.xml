@@ -34,5 +34,6 @@
     <string name="genre_no_info">-</string>
     <string name="movie_popularity_text">Popularity:</string>
     <string name="movie_vote_average_text">Vote average:</string>
+    <string name="empty_list_text">The list is empty</string>
 
 </resources>

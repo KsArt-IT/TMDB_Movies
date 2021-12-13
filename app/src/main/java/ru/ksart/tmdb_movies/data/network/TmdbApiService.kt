@@ -19,7 +19,7 @@ interface TmdbApiService {
 
     @GET("movie/{movie_id}")
     suspend fun getMovieById(
-        @Path("movie_id") movieId: Int,
+        @Path("movie_id") movieId: Long,
         @Query(PARAMS_LANGUAGE) language: String,
     ): Movie
 

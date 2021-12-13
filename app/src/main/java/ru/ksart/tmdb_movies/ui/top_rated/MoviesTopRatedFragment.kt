@@ -5,18 +5,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.internal.aggregatedroot.codegen._ru_ksart_tmdb_movies_App
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.ksart.tmdb_movies.R
@@ -29,10 +32,9 @@ import ru.ksart.tmdb_movies.ui.extension.exhaustive
 import ru.ksart.tmdb_movies.ui.extension.toast
 import ru.ksart.tmdb_movies.ui.top_rated.adaper.MovieTopAdapter
 import ru.ksart.tmdb_movies.ui.top_rated.adaper.MovieTopLoadStateAdapter
-import ru.ksart.tmdb_movies.ui.top_rated.adaper.MovieTopLoadStateViewHolder
 
 @AndroidEntryPoint
-class TopRatedMoviesFragment : Fragment(R.layout.fragment_movies_top_rated) {
+class MoviesTopRatedFragment : Fragment(R.layout.fragment_movies_top_rated) {
 
     private var _binding: FragmentMoviesTopRatedBinding? = null
     private val binding get() = checkNotNull(_binding)
@@ -53,6 +55,9 @@ class TopRatedMoviesFragment : Fragment(R.layout.fragment_movies_top_rated) {
         initAdapter()
         initListener()
         initObserveViewModel()
+        // для анимированного перехода
+        postponeEnterTransition()
+        (view.parent as? ViewGroup)?.doOnPreDraw { startPostponedEnterTransition() }
     }
 
     override fun onDestroyView() {
@@ -62,7 +67,7 @@ class TopRatedMoviesFragment : Fragment(R.layout.fragment_movies_top_rated) {
     }
 
     private fun initAdapter() {
-        _movieAdapter = MovieTopAdapter(viewModel::uiAction.invoke())
+        _movieAdapter = MovieTopAdapter(::showMovieTopDetail)
         binding.movieTopList.run {
             adapter = movieAdapter.withLoadStateHeaderAndFooter(
                 header = MovieTopLoadStateAdapter { movieAdapter.retry() },
@@ -96,10 +101,9 @@ class TopRatedMoviesFragment : Fragment(R.layout.fragment_movies_top_rated) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.uiState.collect { state ->
-                        when(state) {
+                        when (state) {
                             is UiState.Success -> {
 //                                showLoading(false)
-                                Log.d("tagMovie", "TopRatedMoviesFragment: list=${state.data}")
                                 movieAdapter.submitData(state.data)
                             }
                             is UiState.Loading -> showLoading(true)
@@ -109,8 +113,8 @@ class TopRatedMoviesFragment : Fragment(R.layout.fragment_movies_top_rated) {
                 }
                 launch {
                     viewModel.uiEvent.collect { event ->
-                        when(event) {
-                            is UiEvent.Success -> showMovieTopDetail(event.data)
+                        when (event) {
+                            is UiEvent.Success -> {}
                             is UiEvent.Toast -> toast(event.stringId)
                             is UiEvent.Error -> toast(event.message)
                         }.exhaustive
@@ -141,7 +145,13 @@ class TopRatedMoviesFragment : Fragment(R.layout.fragment_movies_top_rated) {
         binding.progressBar.isVisible = isLoading
     }
 
-    private fun showMovieTopDetail(item: MovieTop) {
-        toast("showMovieTopDetail id=${item.id}")
+    private fun showMovieTopDetail(item: MovieTop, imageView: ImageView) {
+        Log.d("tagMovie", "MoviesTopRatedFragment: showMovieTopDetail")
+        val extras = FragmentNavigatorExtras(
+            imageView to item.id.toString()
+        )
+        val action =
+            MoviesTopRatedFragmentDirections.actionTopRatedMoviesFragmentToMovieDetailFragment(item.id)
+        findNavController().navigate(action, extras)
     }
 }

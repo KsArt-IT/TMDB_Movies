@@ -116,7 +116,6 @@
         android:layout_marginStart="@dimen/margin_small"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/voteAverageText"
         app:layout_constraintTop_toTopOf="@+id/voteAverageText"
         tools:text="10.1" />
